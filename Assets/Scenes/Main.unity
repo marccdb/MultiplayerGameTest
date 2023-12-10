@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -14.816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -319,8 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1857310312}
   - component: {fileID: 1857310311}
-  - component: {fileID: 1857310310}
-  - component: {fileID: 1857310309}
+  - component: {fileID: 1857310314}
   - component: {fileID: 1857310313}
   m_Layer: 0
   m_Name: NetworkManager
@@ -329,52 +328,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1857310309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857310308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88c37d3deca7a834d80cfd8d3cfcc510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  networkDiscovery: {fileID: 1857310310}
---- !u!114 &1857310310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857310308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c761308e733c51245b2e8bb4201f46dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enableActiveDiscovery: 1
-  BroadcastAddress: 
-  serverBroadcastListenPort: 47777
-  ActiveDiscoveryInterval: 3
-  transport: {fileID: 1857310313}
-  OnServerFound:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1857310309}
-        m_TargetAssemblyTypeName: Mirror.Discovery.NetworkDiscoveryHUD, Mirror.Components
-        m_MethodName: OnDiscoveredServer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  secretHandshake: 6626013320859995961
 --- !u!114 &1857310311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,15 +347,15 @@ MonoBehaviour:
   sendRate: 60
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 0}
+  transport: {fileID: 1857310313}
   networkAddress: localhost
-  maxConnections: 100
+  maxConnections: 4
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 2341019900124111719, guid: 28b9bfaf68047194c9bb2dbfab2b64b7, type: 3}
   autoCreatePlayer: 1
-  playerSpawnMethod: 0
+  playerSpawnMethod: 1
   spawnPrefabs: []
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -441,21 +394,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857310308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   port: 7777
+  DualMode: 1
   NoDelay: 1
-  SendTimeout: 5000
-  ReceiveTimeout: 30000
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  serverSendQueueLimitPerConnection: 10000
-  serverReceiveQueueLimitPerConnection: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
-  clientSendQueueLimit: 10000
-  clientReceiveQueueLimit: 10000
+  Interval: 10
+  Timeout: 10000
+  RecvBufferSize: 7361536
+  SendBufferSize: 7361536
+  FastResend: 2
+  ReceiveWindowSize: 4096
+  SendWindowSize: 4096
+  MaxRetransmit: 40
+  MaximizeSocketBuffers: 1
+  ReliableMaxMessageSize: 297433
+  UnreliableMaxMessageSize: 1195
+  debugLog: 0
+  statisticsGUI: 0
+  statisticsLog: 0
+--- !u!114 &1857310314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857310308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetX: 0
+  offsetY: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
